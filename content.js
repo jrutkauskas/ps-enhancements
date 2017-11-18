@@ -26,6 +26,15 @@ PSEnhance.setCampus = function()
     //sets the option and activate the .change() event
     //remember to check if elements exist or have already selected a different one.  
 	$("select[id^=SSR_CLSRCH_WRK_CAMPUS]").val("PIT");
+	console.log($("select[id^=SSR_CLSRCH_WRK_CAMPUS] option:contains('nbsp')"));
+	//Handles issue of default select as nbsp
+	$("select[id^=SSR_CLSRCH_WRK_CAMPUS] option[selected='selected']").removeAttr('selected');
+	//Makes Pittsburgh campus the defualt selected attribute
+	$("select[id^=SSR_CLSRCH_WRK_CAMPUS] option[value=PIT]").attr("selected", "selected");
+	$("select[id^=SSR_CLSRCH_WRK_CAMPUS]").trigger("click");
+	$("select[id^=SSR_CLSRCH_WRK_CAMPUS]").trigger("change");
+	$("select[id^=SSR_CLSRCH_WRK_CAMPUS]").trigger("focus");
+	$("select[id^=SSR_CLSRCH_WRK_CAMPUS]").trigger("blur");
 }
 
 
