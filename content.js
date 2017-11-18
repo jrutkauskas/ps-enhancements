@@ -12,7 +12,7 @@ PSEnhance.makeSearchBetter = function()
 //Sets the term on the search to the latest one, not the previous one that will be selected by default
 PSEnhance.setLatestTerm = function()
 {
-    //set the option and activate the .change() event;
+    //set the option and activates the .change() event;
 
     //test code:
     console.log($("input[id^=SSR_CLSRCH_WRK_SUBJECT]").length);
