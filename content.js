@@ -25,7 +25,7 @@ PSEnhance.setCampus = function()
 {
     //sets the option and activate the .change() event
     //remember to check if elements exist or have already selected a different one.  
-	
+	$("select[id^=SSR_CLSRCH_WRK_CAMPUS]").val("PIT");
 }
 
 
