@@ -13,11 +13,35 @@ PSEnhance.makeSearchBetter = function()
 PSEnhance.setLatestTerm = function()
 {
     //set the option and activates the .change() event;
+    if($("select[id^=CLASS_SRCH_WRK2_STRM]").length > 0)
+    {
+        if(!document.PSEnhanceTermManuallyChanged)
+        {
+            var term;
+            $("select[id^=CLASS_SRCH_WRK2_STRM] option").each(function()
+            {
 
+                term = $(this).attr("value");
+                
+            })
+            
+            $("select[id^=CLASS_SRCH_WRK2_STRM]").val(term);
+
+            $("select[id^=CLASS_SRCH_WRK2_STRM]").trigger("click");
+            $("select[id^=CLASS_SRCH_WRK2_STRM]").trigger("change");
+            $("select[id^=CLASS_SRCH_WRK2_STRM]").trigger("focus");
+            $("select[id^=CLASS_SRCH_WRK2_STRM]").trigger("blur");
+
+            $("select[id^=CLASS_SRCH_WRK2_STRM]").on("change", function()
+            {
+                document.PSEnhanceTermManuallyChanged = true;
+            });
+        }
+    }
     //test code:
-    console.log($("input[id^=SSR_CLSRCH_WRK_SUBJECT]").length);
-    $("input[id^=SSR_CLSRCH_WRK_SUBJECT]").css("height", "175px");
-    $("input[id^=SSR_CLSRCH_WRK_SUBJECT]").css("background-color", "#FF0000")
+    // console.log($("input[id^=SSR_CLSRCH_WRK_SUBJECT]").length);
+    // $("input[id^=SSR_CLSRCH_WRK_SUBJECT]").css("height", "175px");
+    // $("input[id^=SSR_CLSRCH_WRK_SUBJECT]").css("background-color", "#FF0000")
 }
 
 //Sets the campus automatically to Pittsburgh.  (Could change later to make it a setting in the extension)
