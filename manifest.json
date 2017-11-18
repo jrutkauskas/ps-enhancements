@@ -1,0 +1,20 @@
+{
+    "manifest_version": 2,
+    "name": "PS Enhancements",
+    "version": "0.1",
+    "browser_action": 
+    {
+        "default_icon": "PSEnhancements.png"
+    },
+    "content_scripts": 
+    [
+        {
+          "matches": 
+          [
+            "https://sisp.cssd.pitt.edu/psc/*"
+          ],
+          "js": ["jquery-3.2.1.min.js", "content.js"],
+          "all_frames": true
+        }
+      ]
+  }
