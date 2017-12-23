@@ -14,6 +14,8 @@ PSEnhance.improveStyle = function()
 {
     $("input").addClass("form-control").css("margin","3px");
     $("select").addClass("form-control").css("margin","3px");
+    $(".PSEDITBOXLABEL,.PSDROPDOWNBOXLABEL").css("font-size","12px");
+    //move unneeded elements:https://stackoverflow.com/questions/1279957/how-to-move-an-element-into-another-element
 }
 //Sets the term on the search to the latest one, not the previous one that will be selected by default
 PSEnhance.setLatestTerm = function()
