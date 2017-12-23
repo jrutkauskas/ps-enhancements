@@ -7,8 +7,14 @@ PSEnhance.makeSearchBetter = function()
 {
     PSEnhance.setLatestTerm();
     PSEnhance.setCampus();
+    PSEnhance.improveStyle();
 }
-
+//uses bootstrap to improve the style of the search
+PSEnhance.improveStyle = function()
+{
+    $("input").addClass("form-control").css("margin","3px");
+    $("select").addClass("form-control").css("margin","3px");
+}
 //Sets the term on the search to the latest one, not the previous one that will be selected by default
 PSEnhance.setLatestTerm = function()
 {
