@@ -7,6 +7,7 @@ PSEnhance.makeSearchBetter = function()
 {
     PSEnhance.setLatestTerm();
     PSEnhance.setCampus();
+    PSEnhance.relocateControls();
 }
 
 //Sets the term on the search to the latest one, not the previous one that will be selected by default
@@ -69,6 +70,14 @@ PSEnhance.setCampus = function()
 			});
 		}
 	}
+}
+PSEnhance.relocateControls = function()
+{
+    console.log($("#ACE_DERIVED_CLSRCH_GROUP2>tbody").length);
+    $("#ACE_DERIVED_CLSRCH_GROUP2>tbody").prepend("<div id='search-box-essentials'>Essential</div><div id='search-box-extras'>Extra</div>");
+
+    $("#search-box-essentials").css({"background-color":"#00FFFF", width: "100%"});
+    $("#search-box-extras").css({"background-color":"#FF00FF", width: "100%"});
 }
 
 
