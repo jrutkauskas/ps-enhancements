@@ -5,14 +5,18 @@ var PSEnhance = {};
 
 PSEnhance.makeSearchBetter = function()
 {
+    //these can be run many times
+    PSEnhance.setLatestTerm();
+    PSEnhance.setCampus();
+
+    //this should only be run once
     //Using $("#ACE_DERIVED_CLSRCH_GROUP2") as a place to store temporary (per page) global variables
     if($("#ACE_DERIVED_CLSRCH_GROUP2") && !$("#ACE_DERIVED_CLSRCH_GROUP2").data("PSAlreadyEnhanced") ) //only run if 
     {
         $("#ACE_DERIVED_CLSRCH_GROUP2").data("PSAlreadyEnhanced",true);
-        PSEnhance.setLatestTerm();
-        PSEnhance.setCampus();
+        
         PSEnhance.relocateControls();
-        console.log($("#ACE_DERIVED_CLSRCH_GROUP2"));
+        //console.log($("#ACE_DERIVED_CLSRCH_GROUP2"));
         
     }
 }
@@ -86,6 +90,9 @@ PSEnhance.relocateControls = function()
 
     $("#search-box-essentials").css({"background-color":"#00FFFF", width: "100%"});
     $("#search-box-extras").css({"background-color":"#FF00FF", width: "100%"});
+
+    //move term box
+    //$("select[id^=CLASS_SRCH_WRK2_STRM]").appendTo("#search-box-essentials");
     
 }
 
