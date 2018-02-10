@@ -5,9 +5,16 @@ var PSEnhance = {};
 
 PSEnhance.makeSearchBetter = function()
 {
-    PSEnhance.setLatestTerm();
-    PSEnhance.setCampus();
-    PSEnhance.relocateControls();
+    //Using $("#ACE_DERIVED_CLSRCH_GROUP2") as a place to store temporary (per page) global variables
+    if($("#ACE_DERIVED_CLSRCH_GROUP2") && !$("#ACE_DERIVED_CLSRCH_GROUP2").data("PSAlreadyEnhanced") ) //only run if 
+    {
+        $("#ACE_DERIVED_CLSRCH_GROUP2").data("PSAlreadyEnhanced",true);
+        PSEnhance.setLatestTerm();
+        PSEnhance.setCampus();
+        PSEnhance.relocateControls();
+        console.log($("#ACE_DERIVED_CLSRCH_GROUP2"));
+        
+    }
 }
 
 //Sets the term on the search to the latest one, not the previous one that will be selected by default
@@ -73,11 +80,13 @@ PSEnhance.setCampus = function()
 }
 PSEnhance.relocateControls = function()
 {
+    
     console.log($("#ACE_DERIVED_CLSRCH_GROUP2>tbody").length);
     $("#ACE_DERIVED_CLSRCH_GROUP2>tbody").prepend("<div id='search-box-essentials'>Essential</div><div id='search-box-extras'>Extra</div>");
 
     $("#search-box-essentials").css({"background-color":"#00FFFF", width: "100%"});
     $("#search-box-extras").css({"background-color":"#FF00FF", width: "100%"});
+    document.PSEnhanceIgnoreNextDOMInsert = true;
 }
 
 
@@ -92,8 +101,10 @@ if($("#ACE_DERIVED_CLSRCH_GROUP2").length > 0 && $("#CLASS_SRCH_WRK2_SSR_PB_CLAS
 }
 
 //if the page dynamically loads the search page later
-$('body').on('DOMNodeInserted',function(e){
-    
+$('body').on('DOMNodeInserted',function(e)
+{
+    if(!document.PSEnhanceIgnoreNextDOMInsert)
+    {
         if($("#ACE_DERIVED_CLSRCH_GROUP2").length > 0 && $("#CLASS_SRCH_WRK2_SSR_PB_CLASS_SRCH").length > 0)
         {
             PSEnhance.makeSearchBetter()
@@ -101,6 +112,11 @@ $('body').on('DOMNodeInserted',function(e){
         }
         
     }
+    else
+    {
+        document.PSEnhanceIgnoreNextDOMInsert = false;
+    }
+}
 );
 
 
