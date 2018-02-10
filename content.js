@@ -23,7 +23,7 @@ PSEnhance.setLatestTerm = function()
     //set the option and activates the .change() event;
     if($("select[id^=CLASS_SRCH_WRK2_STRM]").length > 0)
     {
-        if(!$("#ACE_DERIVED_CLSRCH_GROUP2").data("PSEnhanceTermManuallyChanged")) //document.PSEnhanceTermManuallyChanged)
+        if(!document.PSEnhanceTermManuallyChanged)
         {
             var term;
             $("select[id^=CLASS_SRCH_WRK2_STRM] option").each(function()
@@ -42,7 +42,7 @@ PSEnhance.setLatestTerm = function()
 
             $("select[id^=CLASS_SRCH_WRK2_STRM]").on("change", function()
             {
-                $("#ACE_DERIVED_CLSRCH_GROUP2").data("PSEnhanceTermManuallyChanged", true); //document.PSEnhanceTermManuallyChanged = true;
+                document.PSEnhanceTermManuallyChanged = true;
             });
         }
     }
@@ -57,7 +57,7 @@ PSEnhance.setCampus = function()
 {
 	if($("select[id^=SSR_CLSRCH_WRK_CAMPUS]").length > 0)
 	{
-		if(!$("#ACE_DERIVED_CLSRCH_GROUP2").data("PSEnhanceCampusManuallyChanged"))
+		if(!document.PSEnhanceCampusManuallyChanged)
 		{
 			//sets the option and activate the .change() event
 			//remember to check if elements exist or have already selected a different one.  
@@ -73,7 +73,7 @@ PSEnhance.setCampus = function()
 			
 			$("select[id^=SSR_CLSRCH_WRK_CAMPUS]").on("change", function()
 			{
-				$("#ACE_DERIVED_CLSRCH_GROUP2").data("PSEnhanceCampusManuallyChanged", true);
+				document.PSEnhanceCampusManuallyChanged = true;
 			});
 		}
 	}
@@ -82,7 +82,7 @@ PSEnhance.relocateControls = function()
 {
     
    // console.log($("#ACE_DERIVED_CLSRCH_GROUP2>tbody").length);
-    $("#ACE_DERIVED_CLSRCH_GROUP2>tbody").prepend("<div id='search-box-essentials'>Essential</div><div id='search-box-extras'>Extra</div>");
+    $("#ACE_DERIVED_CLSRCH_GROUP2>tbody").prepend("<tr id=\"PSEnhanceEssentials\"><td></td><td colspan=\"4\"><div id='search-box-essentials'>Essential</div></td></tr><tr><td></td><td colspan=\"4\"><div id='search-box-extras'>Extra</div></td></tr>");
 
     $("#search-box-essentials").css({"background-color":"#00FFFF", width: "100%"});
     $("#search-box-extras").css({"background-color":"#FF00FF", width: "100%"});
